@@ -1,0 +1,20 @@
+name: Post PR details to webhook
+on:
+  pull_request:
+    types: [opened, edited, closed]
+jobs:
+  post-to-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR details
+        id: pr
+        run: |
+          echo "::set-output name=number::${{ github.event.number }}"
+          echo "::set-output name=title::${{ github.event.pull_request.title }}"
+          echo "::set-output name=body::${{ github.event.pull_request.body }}"
+      - name: Post to webhook
+        uses: distributhor/workflow-webhook@v1
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+        with:
+          data: '{"pr_number": "${{ steps.pr.outputs.number }}", "pr_title": "${{ steps.pr.outputs.title }}", "pr_body": "${{ steps.pr.outputs.body }}"}'
