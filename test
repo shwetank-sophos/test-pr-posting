@@ -1,0 +1,130 @@
+1. Script to replace mapped type to custom hibernate type across all code: PCG-12642 [x]
+
+2. Auto resource creator across cloud, use UI to create TF yaml/json
+	- Boilerplate directory tree generation
+	- Create variable for envs
+	- Verify generated TF in CI [Create and Destroy]
+	
+3. Performance and Chaos Testing framework [x]
+	- Identify tool to figure out blast points
+
+4. Quicker Hotfix process
+5. Update JIRA state, dev start, end date, raise PR, post in PR reviews
+
+6. Auto UT test method generator
+	- Mock json generator plugin intellij
+	- Auto UT cases	generator
+
+7. Checkstyles on incremental changes only [x]
+
+=============================================
+8. Policy CSV validator in CI 
+9. Tool/UI to generate policy csv 
+10. Valid tags present in policy
+11. Apply policy for customer(s)
+
+10. Add application properties and feature flags edit dashboard like sqldebug [Saurabh]
+11. List all features and on which env are they not enabled [Alerts]
+
+12. List DDL diff between envs [Alerts] [x]
+13. App_config diff between prod and prod-eu [Alerts] [x]
+
+14. Alerts for Slow API, NetIn NetOut 
+===================================================================================================
+
+2. Auto resource creator across cloud, use UI to create TF yaml/json
+	- Boilerplate directory tree generation
+	- Create variable for envs
+	- Verify generated TF in CI [Create and Destroy]
+
+
+
+10. Add application properties and feature flags edit dashboard like sqldebug [Saurabh]
+11. List all features and on which env are they not enabled [Alerts]
+
+
+
+
+
+Optix Backoffice:
+- Reindex Global Search via TS
+- Application properties CRUD
+- Restricted feature Read, Update
+- User deletion, priviledge escalation
+- Policy/Rules load and unload
+- Optix Job Update
+- Auditing
+
+
+Every API should give one JIRA-ID [Validation can be done]
+
+Additional Enhancements:
+	- Validate JIRA ticket approved
+	- Update JIRA status to 'in-progress' after running command.
+
+
+Auditing: [Shwetank]
+- Insert every CUD operation with data/dto
+- Table: [id, email, action(API-url), JIRA-ID, dto(json), creation_date]
+- List audit actions, paginated [Saurabh]
+- Pre-filter or Annotation
+
+Optix Job: [Amrita]
+- List all pending optix job
+- List all failed optix job
+- Add retry and delete option for optix job
+- Insert new Optix Job [Job_type [list], priority[list], job_data, startAfter(min)]
+
+Policy Load: [Saurabh and Amrita]
+- Call loadRules and loadPoliciesForCustomer and loadPoliciesForAllActive API
+- Move policy load to OptixJob
+
+App config Requirement: [Prasoon]
+- API to list all application properties
+- API to update application properties, [key name, date is not editable, service name will be drop down]
+- API to insert new application property. [Add button]
+- "key" searchable
+- API to delete
+- API to list all service names
+	List of service names:
+		benchmark
+		collector
+		collectorV2-backend
+		common
+		dso
+		frontend
+		preprod-frontend
+		sqs-workload-consumer
+		taskScheduler
+
+ES Reindex: [Shwetank]
+- Table: [id, Search_key, entity_ids, customer_id, created_date, status(pending, running, completed)]
+- API to return all search keys [This is not consolidated]
+- API to return all entries in re-index table
+- API to insert [List<SearchKey>, List<Ids>, customerId]
+- Use case:
+	Select SearchKey [If multiple search_keys are selected, id field should be disabled]
+	Id field is "comma separated long"
+	If customerId is selected, Id field cannot be selected.
+	There should be at least one SearchKey selected.
+
+
+Restricted feature Requirement:
+- Dashboard is already there
+- Make fields editable.
+- Update API
+- Delete API
+- Insert API
+
+
+
+User deletion, priviledge escalation
+- List all users
+- change priviledge of user (Optix_root_admin), add in email addition
+- delete user
+
+
+
+
+
+- Debug logging
