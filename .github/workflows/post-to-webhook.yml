@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send message to Microsoft Teams
-      uses: toko-bifrost/ms-teams-deploy-card@v1
+      uses: toko-bifrost/ms-teams-deploy-card@master
       with:
         webhook-uri: ${{ secrets.TEAMS_WEBHOOK_URI }}
         title: Pull Request ${{ github.event.pull_request.title }}
