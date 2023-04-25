@@ -15,6 +15,6 @@ jobs:
       - name: Post to webhook
         uses: distributhor/workflow-webhook@v1
         env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_url: https://sophosapps.webhook.office.com/webhookb2/26e5ac7e-8ae9-45b1-b28a-ea8154ebccd3@358a41ff-46d9-49d3-a297-370d894eae6a/IncomingWebhook/f6bb858ecb4d4ce6a39e2238c7841a30/08a0c4f7-17b4-40bc-aa92-ae200f2fd69e
         with:
           data: '{"pr_number": "${{ steps.pr.outputs.number }}", "pr_title": "${{ steps.pr.outputs.title }}", "pr_body": "${{ steps.pr.outputs.body }}"}'
